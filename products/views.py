@@ -14,3 +14,7 @@ def index(request):
 def new(request):
     return HttpResponse('Welcome to 1337 New Arrivals')
 
+def product_search(request):
+    query = request.GET.get('q', '')
+    products = Product.objects.filter(name__icontains=query)
+    return render(request, 'products_search.html', {'products': products, 'query': query})
