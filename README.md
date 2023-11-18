@@ -1,4 +1,4 @@
-<p align="center"><img src="/img.jpeg"></p>
+<p align="center"><img src="/img.jpg"></p>
 
 
 # Get Started
