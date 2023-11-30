@@ -30,6 +30,11 @@
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
+           {% if request.user.is_authenticated %}
+				<li class="last"> {{user.username}} | <a href="{% url 'logout' %}">Logout</a></li>
+				{% else %}
+                <button onclick="window.location.href='{% url 'login' %}'" class="btn btn-outline-success my-2 my-sm-0" type="button">Login</button>
+            {% endif %}
       </div>
     </nav>
 
@@ -44,7 +49,7 @@
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        
+
       </div>
     </footer>
     <!-- Optional JavaScript -->

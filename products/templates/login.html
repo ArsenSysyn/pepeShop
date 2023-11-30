@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        /* ????? ??? */
+        .form-container {
+            margin-left: 15px; /* ??????? ??? ?????? ???? ?????? */
+            max-width: 400px; /* ??????????? ?????? ?????????? ????? */
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .form-group label {
+            flex: 1;
+            text-align: right;
+            margin-right: 20px; /* ???????? ????? ????? ????? ?????? */
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group select {
+            flex: 2; /* ?????????? ?????? ????? ????? */
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form-error {
+            color: #ff0000;
+            margin-top: 5px;
+        }
+
+        .login-button {
+            margin-left: 220px; /* ???????? ?????? ? ??? ???????? */
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .create-account-link {
+            text-decoration: underline;
+            color: #007bff;
+            cursor: pointer;
+        }
+    </style>
+
+    <h1>{{ title }}</h1>
+
+    <form method="post" class="form-container" style="margin-top: 20px;">
+        {% csrf_token %}
+
+        <div class="form-error">{{ form.non_field_errors }}</div>
+
+        {% for f in form %}
+            <div class="form-group">
+                <label for="{{ f.id_for_label }}">{{ f.label }}:</label>
+                {{ f }}
+                <div class="form-error">{{ f.errors }}</div>
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="login-button">Login</button>
+        <p style="margin-top: 10px;">Create new account <a href="{% url 'register' %}" class="create-account-link">here</a></p>
+    </form>
+{% endblock %}
