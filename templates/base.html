@@ -31,7 +31,7 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
            {% if request.user.is_authenticated %}
-				<li class="last"> {{user.username}} | <a href="{% url 'logout' %}">Logout</a></li>
+				<li style="list-style-type: none;">{{user.username}} | <a href="{% url 'logout' %}" class="btn btn-outline-success my-2 my-sm-0 login-button">Logout</a></li>
 				{% else %}
                 <button onclick="window.location.href='{% url 'login' %}'" class="btn btn-outline-success my-2 my-sm-0" type="button">Login</button>
             {% endif %}
@@ -43,15 +43,6 @@
 
         {% endblock %}
     </main>
-
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-
-      </div>
-    </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
